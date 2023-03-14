@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2b49ae5db8094e31a90851f9f80fc484" Name="Diagram1">
+        <EntityTypeShape EntityType="Diplom_BeloborodovModel.Authorizations" Width="1.5" PointX="3" PointY="9" />
+        <EntityTypeShape EntityType="Diplom_BeloborodovModel.Divisions" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="Diplom_BeloborodovModel.Docs" Width="1.5" PointX="3" PointY="12" />
+        <EntityTypeShape EntityType="Diplom_BeloborodovModel.InfoClient" Width="1.5" PointX="3" PointY="17.5" />
+        <EntityTypeShape EntityType="Diplom_BeloborodovModel.InfoPropusk" Width="1.5" PointX="3" PointY="14.5" />
+        <EntityTypeShape EntityType="Diplom_BeloborodovModel.Obshii" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="Diplom_BeloborodovModel.Organization" Width="1.5" PointX="0.75" PointY="18.625" />
+        <EntityTypeShape EntityType="Diplom_BeloborodovModel.ReceivingParty" Width="1.5" PointX="3" PointY="1.75" />
+        <EntityTypeShape EntityType="Diplom_BeloborodovModel.Sotrudnik" Width="1.5" PointX="3" PointY="5.875" />
+        <EntityTypeShape EntityType="Diplom_BeloborodovModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="Diplom_BeloborodovModel.Visiting" Width="1.5" PointX="0.75" PointY="14.75" />
+        <AssociationConnector Association="Diplom_BeloborodovModel.FK_Obshii_Authorizations" />
+        <AssociationConnector Association="Diplom_BeloborodovModel.FK_ReceivingParty_Divisions" />
+        <AssociationConnector Association="Diplom_BeloborodovModel.FK_Obshii_Docs" />
+        <AssociationConnector Association="Diplom_BeloborodovModel.FK_InfoClient_Organization" />
+        <AssociationConnector Association="Diplom_BeloborodovModel.FK_Obshii_InfoClient" />
+        <AssociationConnector Association="Diplom_BeloborodovModel.FK_InfoPropusk_Visiting" />
+        <AssociationConnector Association="Diplom_BeloborodovModel.FK_Obshii_InfoPropusk" />
+        <AssociationConnector Association="Diplom_BeloborodovModel.FK_Obshii_ReceivingParty" />
+        <AssociationConnector Association="Diplom_BeloborodovModel.FK_Obshii_Sotrudnik" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

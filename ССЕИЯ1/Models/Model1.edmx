@@ -1,0 +1,699 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище Diplom_BeloborodovModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Authorizations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Divisions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DivisionName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Docs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileDoc" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="InfoClient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="18" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="IdOrganization" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataBirthday" Type="date" />
+          <Property Name="SeriyaPasport" Type="int" />
+          <Property Name="numberPasport" Type="int" />
+          <Property Name="Photo" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="InfoPropusk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateS" Type="date" Nullable="false" />
+          <Property Name="DatePo" Type="date" Nullable="false" />
+          <Property Name="IdGoalVisiting" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Obshii">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdInfoPropusk" Type="int" Nullable="false" />
+          <Property Name="IdReceivingParty" Type="int" Nullable="false" />
+          <Property Name="IdAuthorization" Type="int" Nullable="false" />
+          <Property Name="IdDocs" Type="int" />
+          <Property Name="IdSotrudnik" Type="int" Nullable="false" />
+          <Property Name="IdInfoClient" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReceivingParty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDivision" Type="int" Nullable="false" />
+          <Property Name="Fcs" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Sotrudnik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FCs" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Division" Type="nvarchar" MaxLength="50" />
+          <Property Name="Otdel" Type="nvarchar(max)" />
+          <Property Name="CodSotrudnika" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Visiting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Visiting" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_InfoClient_Organization">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+          <End Role="InfoClient" Type="Self.InfoClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InfoClient">
+              <PropertyRef Name="IdOrganization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoPropusk_Visiting">
+          <End Role="Visiting" Type="Self.Visiting" Multiplicity="1" />
+          <End Role="InfoPropusk" Type="Self.InfoPropusk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visiting">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InfoPropusk">
+              <PropertyRef Name="IdGoalVisiting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Obshii_Authorizations">
+          <End Role="Authorizations" Type="Self.Authorizations" Multiplicity="1" />
+          <End Role="Obshii" Type="Self.Obshii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorizations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obshii">
+              <PropertyRef Name="IdAuthorization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Obshii_Docs">
+          <End Role="Docs" Type="Self.Docs" Multiplicity="0..1" />
+          <End Role="Obshii" Type="Self.Obshii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Docs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obshii">
+              <PropertyRef Name="IdDocs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Obshii_InfoClient">
+          <End Role="InfoClient" Type="Self.InfoClient" Multiplicity="1" />
+          <End Role="Obshii" Type="Self.Obshii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InfoClient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obshii">
+              <PropertyRef Name="IdInfoClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Obshii_InfoPropusk">
+          <End Role="InfoPropusk" Type="Self.InfoPropusk" Multiplicity="1" />
+          <End Role="Obshii" Type="Self.Obshii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InfoPropusk">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obshii">
+              <PropertyRef Name="IdInfoPropusk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Obshii_ReceivingParty">
+          <End Role="ReceivingParty" Type="Self.ReceivingParty" Multiplicity="1" />
+          <End Role="Obshii" Type="Self.Obshii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceivingParty">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obshii">
+              <PropertyRef Name="IdReceivingParty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Obshii_Sotrudnik">
+          <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="1" />
+          <End Role="Obshii" Type="Self.Obshii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnik">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obshii">
+              <PropertyRef Name="IdSotrudnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceivingParty_Divisions">
+          <End Role="Divisions" Type="Self.Divisions" Multiplicity="1" />
+          <End Role="ReceivingParty" Type="Self.ReceivingParty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Divisions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReceivingParty">
+              <PropertyRef Name="IdDivision" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Diplom_BeloborodovModelContainer">
+          <EntitySet Name="Authorizations" EntityType="Self.Authorizations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Divisions" EntityType="Self.Divisions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Docs" EntityType="Self.Docs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InfoClient" EntityType="Self.InfoClient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InfoPropusk" EntityType="Self.InfoPropusk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Obshii" EntityType="Self.Obshii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceivingParty" EntityType="Self.ReceivingParty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrudnik" EntityType="Self.Sotrudnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visiting" EntityType="Self.Visiting" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_InfoClient_Organization" Association="Self.FK_InfoClient_Organization">
+            <End Role="Organization" EntitySet="Organization" />
+            <End Role="InfoClient" EntitySet="InfoClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoPropusk_Visiting" Association="Self.FK_InfoPropusk_Visiting">
+            <End Role="Visiting" EntitySet="Visiting" />
+            <End Role="InfoPropusk" EntitySet="InfoPropusk" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Obshii_Authorizations" Association="Self.FK_Obshii_Authorizations">
+            <End Role="Authorizations" EntitySet="Authorizations" />
+            <End Role="Obshii" EntitySet="Obshii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Obshii_Docs" Association="Self.FK_Obshii_Docs">
+            <End Role="Docs" EntitySet="Docs" />
+            <End Role="Obshii" EntitySet="Obshii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Obshii_InfoClient" Association="Self.FK_Obshii_InfoClient">
+            <End Role="InfoClient" EntitySet="InfoClient" />
+            <End Role="Obshii" EntitySet="Obshii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Obshii_InfoPropusk" Association="Self.FK_Obshii_InfoPropusk">
+            <End Role="InfoPropusk" EntitySet="InfoPropusk" />
+            <End Role="Obshii" EntitySet="Obshii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Obshii_ReceivingParty" Association="Self.FK_Obshii_ReceivingParty">
+            <End Role="ReceivingParty" EntitySet="ReceivingParty" />
+            <End Role="Obshii" EntitySet="Obshii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Obshii_Sotrudnik" Association="Self.FK_Obshii_Sotrudnik">
+            <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+            <End Role="Obshii" EntitySet="Obshii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceivingParty_Divisions" Association="Self.FK_ReceivingParty_Divisions">
+            <End Role="Divisions" EntitySet="Divisions" />
+            <End Role="ReceivingParty" EntitySet="ReceivingParty" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Diplom_BeloborodovModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Diplom_BeloborodovEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Authorizations" EntityType="Diplom_BeloborodovModel.Authorizations" />
+          <EntitySet Name="Divisions" EntityType="Diplom_BeloborodovModel.Divisions" />
+          <EntitySet Name="Docs" EntityType="Diplom_BeloborodovModel.Docs" />
+          <EntitySet Name="InfoClient" EntityType="Diplom_BeloborodovModel.InfoClient" />
+          <EntitySet Name="InfoPropusk" EntityType="Diplom_BeloborodovModel.InfoPropusk" />
+          <EntitySet Name="Obshii" EntityType="Diplom_BeloborodovModel.Obshii" />
+          <EntitySet Name="Organization" EntityType="Diplom_BeloborodovModel.Organization" />
+          <EntitySet Name="ReceivingParty" EntityType="Diplom_BeloborodovModel.ReceivingParty" />
+          <EntitySet Name="Sotrudnik" EntityType="Diplom_BeloborodovModel.Sotrudnik" />
+          <EntitySet Name="sysdiagrams" EntityType="Diplom_BeloborodovModel.sysdiagrams" />
+          <EntitySet Name="Visiting" EntityType="Diplom_BeloborodovModel.Visiting" />
+          <AssociationSet Name="FK_Obshii_Authorizations" Association="Diplom_BeloborodovModel.FK_Obshii_Authorizations">
+            <End Role="Authorizations" EntitySet="Authorizations" />
+            <End Role="Obshii" EntitySet="Obshii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceivingParty_Divisions" Association="Diplom_BeloborodovModel.FK_ReceivingParty_Divisions">
+            <End Role="Divisions" EntitySet="Divisions" />
+            <End Role="ReceivingParty" EntitySet="ReceivingParty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Obshii_Docs" Association="Diplom_BeloborodovModel.FK_Obshii_Docs">
+            <End Role="Docs" EntitySet="Docs" />
+            <End Role="Obshii" EntitySet="Obshii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoClient_Organization" Association="Diplom_BeloborodovModel.FK_InfoClient_Organization">
+            <End Role="Organization" EntitySet="Organization" />
+            <End Role="InfoClient" EntitySet="InfoClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Obshii_InfoClient" Association="Diplom_BeloborodovModel.FK_Obshii_InfoClient">
+            <End Role="InfoClient" EntitySet="InfoClient" />
+            <End Role="Obshii" EntitySet="Obshii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoPropusk_Visiting" Association="Diplom_BeloborodovModel.FK_InfoPropusk_Visiting">
+            <End Role="Visiting" EntitySet="Visiting" />
+            <End Role="InfoPropusk" EntitySet="InfoPropusk" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Obshii_InfoPropusk" Association="Diplom_BeloborodovModel.FK_Obshii_InfoPropusk">
+            <End Role="InfoPropusk" EntitySet="InfoPropusk" />
+            <End Role="Obshii" EntitySet="Obshii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Obshii_ReceivingParty" Association="Diplom_BeloborodovModel.FK_Obshii_ReceivingParty">
+            <End Role="ReceivingParty" EntitySet="ReceivingParty" />
+            <End Role="Obshii" EntitySet="Obshii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Obshii_Sotrudnik" Association="Diplom_BeloborodovModel.FK_Obshii_Sotrudnik">
+            <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+            <End Role="Obshii" EntitySet="Obshii" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Authorizations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Obshii" Relationship="Diplom_BeloborodovModel.FK_Obshii_Authorizations" FromRole="Authorizations" ToRole="Obshii" />
+        </EntityType>
+        <EntityType Name="Divisions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DivisionName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ReceivingParty" Relationship="Diplom_BeloborodovModel.FK_ReceivingParty_Divisions" FromRole="Divisions" ToRole="ReceivingParty" />
+        </EntityType>
+        <EntityType Name="Docs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileDoc" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Obshii" Relationship="Diplom_BeloborodovModel.FK_Obshii_Docs" FromRole="Docs" ToRole="Obshii" />
+        </EntityType>
+        <EntityType Name="InfoClient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IdOrganization" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataBirthday" Type="DateTime" Precision="0" />
+          <Property Name="SeriyaPasport" Type="Int32" />
+          <Property Name="numberPasport" Type="Int32" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Organization" Relationship="Diplom_BeloborodovModel.FK_InfoClient_Organization" FromRole="InfoClient" ToRole="Organization" />
+          <NavigationProperty Name="Obshii" Relationship="Diplom_BeloborodovModel.FK_Obshii_InfoClient" FromRole="InfoClient" ToRole="Obshii" />
+        </EntityType>
+        <EntityType Name="InfoPropusk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateS" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DatePo" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdGoalVisiting" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Visiting" Relationship="Diplom_BeloborodovModel.FK_InfoPropusk_Visiting" FromRole="InfoPropusk" ToRole="Visiting" />
+          <NavigationProperty Name="Obshii" Relationship="Diplom_BeloborodovModel.FK_Obshii_InfoPropusk" FromRole="InfoPropusk" ToRole="Obshii" />
+        </EntityType>
+        <EntityType Name="Obshii">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdInfoPropusk" Type="Int32" Nullable="false" />
+          <Property Name="IdReceivingParty" Type="Int32" Nullable="false" />
+          <Property Name="IdAuthorization" Type="Int32" Nullable="false" />
+          <Property Name="IdDocs" Type="Int32" />
+          <Property Name="IdSotrudnik" Type="Int32" Nullable="false" />
+          <Property Name="IdInfoClient" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Authorizations" Relationship="Diplom_BeloborodovModel.FK_Obshii_Authorizations" FromRole="Obshii" ToRole="Authorizations" />
+          <NavigationProperty Name="Docs" Relationship="Diplom_BeloborodovModel.FK_Obshii_Docs" FromRole="Obshii" ToRole="Docs" />
+          <NavigationProperty Name="InfoClient" Relationship="Diplom_BeloborodovModel.FK_Obshii_InfoClient" FromRole="Obshii" ToRole="InfoClient" />
+          <NavigationProperty Name="InfoPropusk" Relationship="Diplom_BeloborodovModel.FK_Obshii_InfoPropusk" FromRole="Obshii" ToRole="InfoPropusk" />
+          <NavigationProperty Name="ReceivingParty" Relationship="Diplom_BeloborodovModel.FK_Obshii_ReceivingParty" FromRole="Obshii" ToRole="ReceivingParty" />
+          <NavigationProperty Name="Sotrudnik" Relationship="Diplom_BeloborodovModel.FK_Obshii_Sotrudnik" FromRole="Obshii" ToRole="Sotrudnik" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="InfoClient" Relationship="Diplom_BeloborodovModel.FK_InfoClient_Organization" FromRole="Organization" ToRole="InfoClient" />
+        </EntityType>
+        <EntityType Name="ReceivingParty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDivision" Type="Int32" Nullable="false" />
+          <Property Name="Fcs" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Divisions" Relationship="Diplom_BeloborodovModel.FK_ReceivingParty_Divisions" FromRole="ReceivingParty" ToRole="Divisions" />
+          <NavigationProperty Name="Obshii" Relationship="Diplom_BeloborodovModel.FK_Obshii_ReceivingParty" FromRole="ReceivingParty" ToRole="Obshii" />
+        </EntityType>
+        <EntityType Name="Sotrudnik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FCs" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Otdel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CodSotrudnika" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Obshii" Relationship="Diplom_BeloborodovModel.FK_Obshii_Sotrudnik" FromRole="Sotrudnik" ToRole="Obshii" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Visiting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Visiting1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="InfoPropusk" Relationship="Diplom_BeloborodovModel.FK_InfoPropusk_Visiting" FromRole="Visiting" ToRole="InfoPropusk" />
+        </EntityType>
+        <Association Name="FK_Obshii_Authorizations">
+          <End Type="Diplom_BeloborodovModel.Authorizations" Role="Authorizations" Multiplicity="1" />
+          <End Type="Diplom_BeloborodovModel.Obshii" Role="Obshii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authorizations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obshii">
+              <PropertyRef Name="IdAuthorization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceivingParty_Divisions">
+          <End Type="Diplom_BeloborodovModel.Divisions" Role="Divisions" Multiplicity="1" />
+          <End Type="Diplom_BeloborodovModel.ReceivingParty" Role="ReceivingParty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Divisions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReceivingParty">
+              <PropertyRef Name="IdDivision" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Obshii_Docs">
+          <End Type="Diplom_BeloborodovModel.Docs" Role="Docs" Multiplicity="0..1" />
+          <End Type="Diplom_BeloborodovModel.Obshii" Role="Obshii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Docs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obshii">
+              <PropertyRef Name="IdDocs" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoClient_Organization">
+          <End Type="Diplom_BeloborodovModel.Organization" Role="Organization" Multiplicity="1" />
+          <End Type="Diplom_BeloborodovModel.InfoClient" Role="InfoClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InfoClient">
+              <PropertyRef Name="IdOrganization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Obshii_InfoClient">
+          <End Type="Diplom_BeloborodovModel.InfoClient" Role="InfoClient" Multiplicity="1" />
+          <End Type="Diplom_BeloborodovModel.Obshii" Role="Obshii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InfoClient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obshii">
+              <PropertyRef Name="IdInfoClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoPropusk_Visiting">
+          <End Type="Diplom_BeloborodovModel.Visiting" Role="Visiting" Multiplicity="1" />
+          <End Type="Diplom_BeloborodovModel.InfoPropusk" Role="InfoPropusk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visiting">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InfoPropusk">
+              <PropertyRef Name="IdGoalVisiting" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Obshii_InfoPropusk">
+          <End Type="Diplom_BeloborodovModel.InfoPropusk" Role="InfoPropusk" Multiplicity="1" />
+          <End Type="Diplom_BeloborodovModel.Obshii" Role="Obshii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InfoPropusk">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obshii">
+              <PropertyRef Name="IdInfoPropusk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Obshii_ReceivingParty">
+          <End Type="Diplom_BeloborodovModel.ReceivingParty" Role="ReceivingParty" Multiplicity="1" />
+          <End Type="Diplom_BeloborodovModel.Obshii" Role="Obshii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceivingParty">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obshii">
+              <PropertyRef Name="IdReceivingParty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Obshii_Sotrudnik">
+          <End Type="Diplom_BeloborodovModel.Sotrudnik" Role="Sotrudnik" Multiplicity="1" />
+          <End Type="Diplom_BeloborodovModel.Obshii" Role="Obshii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnik">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Obshii">
+              <PropertyRef Name="IdSotrudnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Diplom_BeloborodovModelContainer" CdmEntityContainer="Diplom_BeloborodovEntities">
+          <EntitySetMapping Name="Authorizations">
+            <EntityTypeMapping TypeName="Diplom_BeloborodovModel.Authorizations">
+              <MappingFragment StoreEntitySet="Authorizations">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Divisions">
+            <EntityTypeMapping TypeName="Diplom_BeloborodovModel.Divisions">
+              <MappingFragment StoreEntitySet="Divisions">
+                <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Docs">
+            <EntityTypeMapping TypeName="Diplom_BeloborodovModel.Docs">
+              <MappingFragment StoreEntitySet="Docs">
+                <ScalarProperty Name="FileDoc" ColumnName="FileDoc" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InfoClient">
+            <EntityTypeMapping TypeName="Diplom_BeloborodovModel.InfoClient">
+              <MappingFragment StoreEntitySet="InfoClient">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="numberPasport" ColumnName="numberPasport" />
+                <ScalarProperty Name="SeriyaPasport" ColumnName="SeriyaPasport" />
+                <ScalarProperty Name="DataBirthday" ColumnName="DataBirthday" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="IdOrganization" ColumnName="IdOrganization" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InfoPropusk">
+            <EntityTypeMapping TypeName="Diplom_BeloborodovModel.InfoPropusk">
+              <MappingFragment StoreEntitySet="InfoPropusk">
+                <ScalarProperty Name="IdGoalVisiting" ColumnName="IdGoalVisiting" />
+                <ScalarProperty Name="DatePo" ColumnName="DatePo" />
+                <ScalarProperty Name="DateS" ColumnName="DateS" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Obshii">
+            <EntityTypeMapping TypeName="Diplom_BeloborodovModel.Obshii">
+              <MappingFragment StoreEntitySet="Obshii">
+                <ScalarProperty Name="IdInfoClient" ColumnName="IdInfoClient" />
+                <ScalarProperty Name="IdSotrudnik" ColumnName="IdSotrudnik" />
+                <ScalarProperty Name="IdDocs" ColumnName="IdDocs" />
+                <ScalarProperty Name="IdAuthorization" ColumnName="IdAuthorization" />
+                <ScalarProperty Name="IdReceivingParty" ColumnName="IdReceivingParty" />
+                <ScalarProperty Name="IdInfoPropusk" ColumnName="IdInfoPropusk" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organization">
+            <EntityTypeMapping TypeName="Diplom_BeloborodovModel.Organization">
+              <MappingFragment StoreEntitySet="Organization">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceivingParty">
+            <EntityTypeMapping TypeName="Diplom_BeloborodovModel.ReceivingParty">
+              <MappingFragment StoreEntitySet="ReceivingParty">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Fcs" ColumnName="Fcs" />
+                <ScalarProperty Name="IdDivision" ColumnName="IdDivision" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotrudnik">
+            <EntityTypeMapping TypeName="Diplom_BeloborodovModel.Sotrudnik">
+              <MappingFragment StoreEntitySet="Sotrudnik">
+                <ScalarProperty Name="CodSotrudnika" ColumnName="CodSotrudnika" />
+                <ScalarProperty Name="Otdel" ColumnName="Otdel" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="FCs" ColumnName="FCs" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Diplom_BeloborodovModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visiting">
+            <EntityTypeMapping TypeName="Diplom_BeloborodovModel.Visiting">
+              <MappingFragment StoreEntitySet="Visiting">
+                <ScalarProperty Name="Visiting1" ColumnName="Visiting" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

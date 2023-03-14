@@ -1,0 +1,85 @@
+﻿<Window x:Class="ССЕИЯ1.Viev.Windows.LichoePosechenie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ССЕИЯ1.Viev.Windows"
+        mc:Ignorable="d"
+        Title="LichoePosechenie" Height="700" Width="1300">
+
+
+
+    <Grid Margin="0,0,2,0">
+
+        <TextBox HorizontalAlignment="Center" Grid.Row="1" Grid.Column = "1" TextWrapping="Wrap" Margin="59,99,58,25" Width="313"/>
+        <ComboBox x:Name="CoMbo_podrazdel" HorizontalAlignment="Center" Height="23" Grid.Row="1" Grid.Column = "1"  Text="TextBox" VerticalAlignment="Top" Width="255" Margin="117,51,58,0"/>
+        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="457,153,283,0"/>
+        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="357,66,183,0"/>
+        <DatePicker HorizontalAlignment="Center" Height="26" Grid.Row="2" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="457,94,283,0"/>
+        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="457,125,283,0"/>
+        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="357,38,183,0"/>
+        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,150,463,0"/>
+        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,122,463,0"/>
+        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,94,463,0"/>
+        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,66,463,0"/>
+        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,38,463,0"/>
+
+
+
+
+
+        <Label Content="Информация для пропуска"    HorizontalAlignment="Left"  VerticalAlignment="Top" Background="#FFFF8B00" Height="29" Grid.Row="1" Grid.Column="0" Width="285"/>
+
+        <Label Content="Принимающая сторона" HorizontalAlignment="Left"  VerticalAlignment="Top" Background="#FFFF8B00" Height="29" Grid.Row="1" Grid.Column="1" Width="430"/>
+
+        <Label Content="Информация о посетителе" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFFF8B00" Width="850" Height="27" Grid.Row="2" Margin="0,1,0,0"/>
+        <Label Content="Прикрепляемые документы" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFFF8B00" Height="30" Grid.Row="3" Width="188"/>
+        <Button Content="Оформить заявку" HorizontalAlignment="Left" Margin="722,297,0,0" VerticalAlignment="Top" Width="128" Height="38" Grid.Row="2" BorderBrush="#FFFD6800" Background="{x:Null}"/>
+        <Button Content="Очистить форму" HorizontalAlignment="Left" Margin="582,297,0,0" VerticalAlignment="Top" Width="128" Height="38" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <Button Content="Загрузить фото" HorizontalAlignment="Left" Margin="680,153,0,0" VerticalAlignment="Top" Width="104" Height="35" Grid.Row="2" BorderBrush="#FFFD6800" Background="{x:Null}"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="37,38,0,0" VerticalAlignment="Top" Width="126" Height="30" Grid.Row="2"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="37,62,0,0" VerticalAlignment="Top" Width="126" Height="30" Grid.Row="2"/>
+        <Label Content="Отчество" HorizontalAlignment="Left" Margin="37,87,0,0" VerticalAlignment="Top" Width="126" Height="30" Grid.Row="2"/>
+        <Label Content="Телефон" HorizontalAlignment="Left" Margin="37,117,0,0" VerticalAlignment="Top" Width="126" Height="30" Grid.Row="2"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="37,146,0,0" VerticalAlignment="Top" Width="126" Height="30" Grid.Row="2"/>
+        <Label Content="Организация" HorizontalAlignment="Left" Margin="346,33,0,0" VerticalAlignment="Top" Width="111" Height="28" Grid.Row="2"/>
+        <Label Content="Примечание" HorizontalAlignment="Left" Margin="346,62,0,0" VerticalAlignment="Top" Width="111" Height="27" Grid.Row="2"/>
+        <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="346,89,0,0" VerticalAlignment="Top" Width="111" Height="30" Grid.Row="2"/>
+        <Label Content="Серия" HorizontalAlignment="Left" VerticalAlignment="Top" Width="106" Height="28" Grid.Row="2" Margin="346,118,0,0"/>
+        <Label Content="Номер" HorizontalAlignment="Left" Margin="346,146,0,0" VerticalAlignment="Top" Width="106" Height="30" Grid.Row="2" RenderTransformOrigin="1,0.867"/>
+        <Label Content="Срок дейсвия заявки" HorizontalAlignment="Left" Margin="0,51,0,0" VerticalAlignment="Top" Width="148" Height="30" Grid.Row="1"/>
+        <Label Content="Подразделение" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="102" Height="27" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="Фио" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" Width="44" Height="30" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="Цель посещения" HorizontalAlignment="Left" Margin="0,110,0,0" VerticalAlignment="Top" Width="158" Height="29" Grid.Row="1"/>
+        <Label Content="с*" HorizontalAlignment="Left" Margin="0,75,0,0" VerticalAlignment="Top" Width="32" Height="30" Grid.Row="1"/>
+        <Label Content="по*" HorizontalAlignment="Left" Margin="133,76,0,0" VerticalAlignment="Top" Width="33" Height="26" Grid.Row="1" RenderTransformOrigin="-1.4,0.767"/>
+        <Label Content="Форма записи на посещение мероприятие" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="850" FontSize="36" Height="67" Margin="0,0,10,0" />
+        <DatePicker HorizontalAlignment="Center" Grid.Row="1"  Margin="23,78,727,51" Width="110"/>
+        <DatePicker HorizontalAlignment="Center" Grid.Row="1"  Margin="166,77,580,52" Width="114"/>
+        <ComboBox x:Name="COMBO" HorizontalAlignment="Center" Grid.Row="1"  Margin="147,111,599,18" Width="114" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Button Content="Прикрепить файл" HorizontalAlignment="Left" Margin="0,45,0,0" VerticalAlignment="Top" Width="188" Height="23" Grid.Row="3" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="680,47,0,0" Grid.Row="2" VerticalAlignment="Top" Width="104" Source="free-icon-registration-form-2718413.png"/>
+
+
+
+        <Image Source="/Resources/Images/pngegg (1).png" Margin="383,99,17,25" Grid.Row="1" Grid.Column="1" />
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="54*"/>
+            <RowDefinition Height="104*"/>
+            <RowDefinition Height="235*"/>
+
+            <RowDefinition Height="63*"/>
+
+
+        </Grid.RowDefinitions>
+
+
+    </Grid>
+</Window>
