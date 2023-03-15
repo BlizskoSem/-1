@@ -12,17 +12,17 @@
     <Grid Margin="0,0,2,0">
 
         <TextBox HorizontalAlignment="Center" Grid.Row="1" Grid.Column = "1" TextWrapping="Wrap" Margin="59,99,58,25" Width="313"/>
-        <ComboBox x:Name="CoMbo_podrazdel" HorizontalAlignment="Center" Height="23" Grid.Row="1" Grid.Column = "1"  Text="TextBox" VerticalAlignment="Top" Width="255" Margin="117,51,58,0"/>
-        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="457,153,283,0"/>
-        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="357,66,183,0"/>
-        <DatePicker HorizontalAlignment="Center" Height="26" Grid.Row="2" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="457,94,283,0"/>
-        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="457,125,283,0"/>
-        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="357,38,183,0"/>
-        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,150,463,0"/>
-        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,122,463,0"/>
-        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,94,463,0"/>
-        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,66,463,0"/>
-        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,38,463,0"/>
+        <ComboBox x:Name="CoMbo_podrazdel" HorizontalAlignment="Center" Height="23" Grid.Row="1" Grid.Column = "1"  Text="TextBox" VerticalAlignment="Top" Width="255" Margin="117,51,58,0" SelectionChanged="CoMbo_podrazdel_SelectionChanged"/>
+        <TextBox x:Name="TxtNumber" HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="457,153,283,0"/>
+        <TextBox x:Name="TxtPrim" HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="357,66,183,0"/>
+        <DatePicker x:Name="DateBirth" HorizontalAlignment="Center" Height="26" Grid.Row="2" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="457,94,283,0"/>
+        <TextBox x:Name="TxtSeria" HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="457,125,283,0"/>
+        <ComboBox x:Name="TxtOrgan" HorizontalAlignment="Center" Height="23" Grid.Row="2" VerticalAlignment="Top" Width="120" Margin="357,38,183,0" SelectionChanged="TxtOrgan_SelectionChanged"/>
+        <TextBox x:Name="TxtMail" HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,150,463,0"/>
+        <TextBox x:Name="TxtPhone" HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,122,463,0"/>
+        <TextBox x:Name="TxtOtchestvo" HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,94,463,0"/>
+        <TextBox x:Name="TxtName" HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,66,463,0"/>
+        <TextBox x:Name="TxtFami" HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="77,38,463,0"/>
 
 
 
@@ -34,9 +34,9 @@
 
         <Label Content="Информация о посетителе" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFFF8B00" Width="850" Height="27" Grid.Row="2" Margin="0,1,0,0"/>
         <Label Content="Прикрепляемые документы" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFFF8B00" Height="30" Grid.Row="3" Width="188"/>
-        <Button Content="Оформить заявку" HorizontalAlignment="Left" Margin="722,297,0,0" VerticalAlignment="Top" Width="128" Height="38" Grid.Row="2" BorderBrush="#FFFD6800" Background="{x:Null}"/>
-        <Button Content="Очистить форму" HorizontalAlignment="Left" Margin="582,297,0,0" VerticalAlignment="Top" Width="128" Height="38" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}"/>
-        <Button Content="Загрузить фото" HorizontalAlignment="Left" Margin="680,153,0,0" VerticalAlignment="Top" Width="104" Height="35" Grid.Row="2" BorderBrush="#FFFD6800" Background="{x:Null}"/>
+        <Button Content="Оформить заявку" HorizontalAlignment="Left" Margin="722,297,0,0" VerticalAlignment="Top" Width="128" Height="38" Grid.Row="2" BorderBrush="#FFFD6800" Background="{x:Null}" Click="Button_Click_1"/>
+        <Button Content="Очистить форму" HorizontalAlignment="Left" Margin="582,297,0,0" VerticalAlignment="Top" Width="128" Height="38" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click"/>
+        <Button Content="Загрузить фото" HorizontalAlignment="Left" Margin="680,153,0,0" VerticalAlignment="Top" Width="104" Height="35" Grid.Row="2" BorderBrush="#FFFD6800" Background="{x:Null}" Click="Button_Click_2"/>
         <Label Content="Фамилия" HorizontalAlignment="Left" Margin="37,38,0,0" VerticalAlignment="Top" Width="126" Height="30" Grid.Row="2"/>
         <Label Content="Имя" HorizontalAlignment="Left" Margin="37,62,0,0" VerticalAlignment="Top" Width="126" Height="30" Grid.Row="2"/>
         <Label Content="Отчество" HorizontalAlignment="Left" Margin="37,87,0,0" VerticalAlignment="Top" Width="126" Height="30" Grid.Row="2"/>
